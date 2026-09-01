@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prajapati Cop. | Fashion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="announcement">🚚 FREE SHIPPING on all orders above ₹999 <span>|</span> COD Available</div>
+
+<header class="header">
+  <a class="logo" href="#home">Prajapati Cop.</a>
+  <nav>
+    <a class="active" href="#home">HOME</a>
+    <a href="#shop">SHOP</a>
+    <a href="#categories">CATEGORIES</a>
+    <a href="#about">ABOUT US</a>
+    <a href="#contact">CONTACT US</a>
+  </nav>
+  <div class="actions">
+    <button aria-label="Search" onclick="toggleSearch()">⌕</button>
+    <button aria-label="Account" onclick="location.href='login.html'">♙</button>
+    <button aria-label="Wishlist" onclick="openWishlist()">♡<b id="wishCount">0</b></button>
+    <button aria-label="Cart" onclick="openCart()">🛒<b id="cartCount">0</b></button>
+  </div>
+</header>
+
+<div id="searchBar" class="search-bar">
+  <input id="searchInput" placeholder="Search products..." oninput="searchProducts(this.value)">
+</div>
+
+<main id="home">
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">NEW ARRIVALS</p>
+    <h1>Elevate Your<br>Everyday Style</h1>
+    <p>Discover premium quality clothing that defines<br>comfort, style and confidence.</p>
+    <div class="hero-buttons">
+      <a href="#shop" class="btn dark">SHOP NOW</a>
+      <a href="#categories" class="btn light">EXPLORE COLLECTION</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1000&q=85" alt="Fashion model">
+  </div>
+</section>
+
+<section class="benefits">
+  <div><i>▱</i><span><strong>Free Shipping</strong><small>On orders above ₹999</small></span></div>
+  <div><i>◇</i><span><strong>Secure Payment</strong><small>100% secure payment</small></span></div>
+  <div><i>↻</i><span><strong>Easy Returns</strong><small>7 days return policy</small></span></div>
+  <div><i>◉</i><span><strong>24/7 Support</strong><small>We support online 24/7</small></span></div>
+</section>
+
+<section id="categories" class="section">
+  <div class="section-heading">
+    <p>SHOP BY CATEGORY</p><h2>Popular Categories</h2>
+  </div>
+  <div class="categories">
+    <article onclick="filterCategory('T-Shirts')"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"><h3>T-Shirts</h3><span>SHOP NOW →</span></article>
+    <article onclick="filterCategory('Hoodies')"><img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80"><h3>Hoodies</h3><span>SHOP NOW →</span></article>
+    <article onclick="filterCategory('Shirts')"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=700&q=80"><h3>Shirts</h3><span>SHOP NOW →</span></article>
+    <article onclick="filterCategory('Jeans')"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=700&q=80"><h3>Jeans</h3><span>SHOP NOW →</span></article>
+    <article onclick="filterCategory('Accessories')"><img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=700&q=80"><h3>Accessories</h3><span>SHOP NOW →</span></article>
+  </div>
+</section>
+
+<section id="shop" class="section shop-section">
+  <div class="section-heading">
+    <p>CURATED FOR YOU</p><h2>Featured Collection</h2>
+  </div>
+  <div class="filters">
+    <button onclick="filterCategory('All')" class="selected">All</button>
+    <button onclick="filterCategory('T-Shirts')">T-Shirts</button>
+    <button onclick="filterCategory('Hoodies')">Hoodies</button>
+    <button onclick="filterCategory('Shirts')">Shirts</button>
+    <button onclick="filterCategory('Jeans')">Jeans</button>
+  </div>
+  <div id="products" class="products"></div>
+</section>
+
+<section id="about" class="about">
+  <div><p class="eyebrow">OUR STORY</p><h2>Simple. Timeless.<br>Made for You.</h2></div>
+  <p>Prajapati Cop. brings together clean design and everyday comfort. Our collection is created for people who believe great style does not need to be complicated.</p>
+</section>
+
+<section id="contact" class="newsletter">
+  <div><p>STAY IN STYLE</p><h2>Get updates on new drops</h2></div>
+  <form onsubmit="subscribe(event)">
+    <input type="email" placeholder="Enter your email address" required>
+    <button class="btn dark">SUBSCRIBE</button>
+  </form>
+</section>
+</main>
+
+<footer>
+  <div><h3>Prajapati Cop.</h3><p>Minimal fashion for everyday life.</p></div>
+  <p>© 2026 Prajapati Cop. All rights reserved. <span style='margin-left:10px'><a href='admin.html' style='color:#666'>Admin</a></span></p>
+</footer>
+
+<div id="overlay" class="overlay" onclick="closePanels()"></div>
+<aside id="cartPanel" class="panel">
+  <button class="close" onclick="closePanels()">×</button><h2>Your Cart</h2>
+  <div id="cartItems"></div>
+  <div class="total">Total <strong id="cartTotal">₹0</strong></div>
+  <button class="btn dark full" onclick="goCheckout()">CHECKOUT</button>
+</aside>
+<aside id="wishPanel" class="panel">
+  <button class="close" onclick="closePanels()">×</button><h2>Your Wishlist</h2>
+  <div id="wishItems"></div>
+</aside>
+
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
